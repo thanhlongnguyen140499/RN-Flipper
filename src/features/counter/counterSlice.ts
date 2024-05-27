@@ -3,10 +3,12 @@ import type {PayloadAction} from '@reduxjs/toolkit';
 
 export interface CounterState {
   value: number;
+  loadingCounter: boolean;
 }
 
 const initialState: CounterState = {
   value: 0,
+  loadingCounter: false,
 };
 
 export const counterSlice = createSlice({
@@ -22,9 +24,11 @@ export const counterSlice = createSlice({
     incrementByAmount: (state, action: PayloadAction<number>) => {
       state.value += action.payload;
     },
+    incrementAsync: () => {},
   },
 });
 
-export const {increment, decrement, incrementByAmount} = counterSlice.actions;
+export const {increment, decrement, incrementByAmount, incrementAsync} =
+  counterSlice.actions;
 
 export default counterSlice.reducer;

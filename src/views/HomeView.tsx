@@ -12,7 +12,10 @@ import {
   useAppSelector,
   useCounterHook,
 } from '../features/hooks';
-import {incrementAsync} from '../features/counter/counterSlice';
+import {
+  incrementAsync,
+  incrementByAmoutAsync,
+} from '../features/counter/counterSlice';
 
 const HomeView = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -65,6 +68,7 @@ const HomeView = () => {
         <Button title="descrement" onPress={handleCounterDecrement} />
         <Button title="test" onPress={handleIncrementAndDescrment} />
 
+        <Button title="Add Async" onPress={() => dispatch(incrementAsync())} />
         <View style={styles.amoutContainer}>
           <TextInput
             value={amoutNumber.toString()}
@@ -74,7 +78,10 @@ const HomeView = () => {
             style={styles.amoutTextInput}
             keyboardType={'numeric'}
           />
-          <Button title="Add" onPress={() => dispatch(incrementAsync())} />
+          <Button
+            title="Update"
+            onPress={() => dispatch(incrementByAmoutAsync(amoutNumber))}
+          />
         </View>
       </View>
     </SafeAreaView>

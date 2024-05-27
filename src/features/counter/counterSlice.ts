@@ -25,10 +25,18 @@ export const counterSlice = createSlice({
       state.value += action.payload;
     },
     incrementAsync: () => {},
+    incrementByAmoutAsync: (state, action: PayloadAction<number>) => {
+      state.value = action.payload;
+    },
   },
 });
 
-export const {increment, decrement, incrementByAmount, incrementAsync} =
-  counterSlice.actions;
+export const {
+  increment,
+  decrement,
+  incrementByAmount,
+  incrementAsync,
+  incrementByAmoutAsync,
+} = counterSlice.actions;
 
 export default counterSlice.reducer;

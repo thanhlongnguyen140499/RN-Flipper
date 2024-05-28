@@ -1,5 +1,5 @@
-import {useDispatch, useSelector} from 'react-redux';
 import type {RootState, AppDispatch} from '../../store';
+import {useDispatch, useSelector} from 'react-redux';
 
 export {default as useCounterHook} from './counterHook';
 

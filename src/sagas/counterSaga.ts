@@ -38,7 +38,7 @@ function* handleIncrementByAmountAsync(action: PayloadAction) {
     yield call(fetchIncrementByAmout, number);
     yield put(increment());
   } catch (error) {
-    console.log('error: ', error);
+    // console.log('error: ', error);
   }
 }
 

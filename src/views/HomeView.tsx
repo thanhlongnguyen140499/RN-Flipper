@@ -6,7 +6,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {
   useAppDispatch,
   useAppSelector,
@@ -18,33 +18,10 @@ import {
 } from '../features/counter/counterSlice';
 
 const HomeView = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [dataRes1, setDataRes1] = useState<any>();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [dataRes2, setDataRes2] = useState<any>();
   const [amoutNumber, setAmoutNumber] = useState<number>(0);
 
   const {handleCounterIncrement, handleCounterDecrement} = useCounterHook();
   const value = useAppSelector(state => state.counter.value);
-
-  useEffect(() => {
-    fetchDefaultData();
-  }, []);
-
-  const fetchDefaultData = async () => {
-    try {
-      const data1 = await fetch('https://catfact.ninja/fact');
-      const data2 = await fetch(
-        'https://api.coindesk.com/v1/bpi/currentprice.json',
-      );
-      if (data1 && data2) {
-        setDataRes1(data1);
-        setDataRes2(data2);
-      }
-    } catch (error) {
-      console.log('error: ', error);
-    }
-  };
 
   const handleIncrementAndDescrment = () => {
     handleCounterIncrement();

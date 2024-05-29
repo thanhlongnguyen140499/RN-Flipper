@@ -1,6 +1,7 @@
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
+#import <CodePush/CodePush.h>
 
 @implementation AppDelegate
 
@@ -14,9 +15,18 @@
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
+// - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
+// {
+//   return [self bundleURL];
+// }
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
-  return [self bundleURL];
+  #if DEBUG
+    // return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+    return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index"];
+  #else
+    return [CodePush bundleURL];
+  #endif
 }
 
 - (NSURL *)bundleURL
@@ -24,7 +34,9 @@
 #if DEBUG
   return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index"];
 #else
-  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  // return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  // -> This change configures your app to always load the most recent version of your app's JS bundle.
+  return [CodePush bundleURL];
 #endif
 }
 

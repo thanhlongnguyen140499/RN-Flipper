@@ -7,12 +7,18 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "deploy-ios": "appcenter codepush release-react -a thanhlong-99vn/Research-Flipper -d CodePushDeploymentKey",
+    "deploy-android": "appcenter codepush release-react -a thanhlong-99vn/Research-Flipper-Android -d CodePushDeploymentKey"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
+    "appcenter": "5.0.1",
+    "appcenter-analytics": "5.0.1",
+    "appcenter-crashes": "5.0.1",
     "react": "18.2.0",
     "react-native": "^0.73.8",
+    "react-native-code-push": "^8.2.2",
     "react-native-flipper": "^0.207.0",
     "react-redux": "^9.1.2",
     "redux-flipper": "^2.0.3",
